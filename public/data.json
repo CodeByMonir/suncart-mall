@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "name": "UV Protection Sunglasses",
+    "brand": "SunShade",
+    "price": 15,
+    "rating": 4.7,
+    "stock": 10,
+    "description": "Stylish UV protection sunglasses perfect for summer outings.",
+    "image": "https://images.othoba.com/images/thumbs/1241710_rayban-wayfer-sunglasses-for-a-men-100-uv-protection-glass.jpeg",
+    "category": "Accessories"
+  },
+  {
+    "id": 2,
+    "name": "Wide Brim Straw Hat",
+    "brand": "BeachVibe",
+    "price": 18,
+    "rating": 4.8,
+    "stock": 15,
+    "description": "Lightweight breathable straw hat with excellent sun protection.",
+    "image": "https://ca.tilley.com/cdn/shop/files/H05HT6008_NATURAL_1.jpg?v=1748978312&width=960",
+    "category": "Hats"
+  },
+  {
+    "id": 3,
+    "name": "Extra Large Beach Towel",
+    "brand": "SummerWave",
+    "price": 22,
+    "rating": 4.6,
+    "stock": 20,
+    "description": "Soft and quick-dry microfiber beach towel with vibrant summer design.",
+    "image": "https://d4o8jlh9x3yxa.cloudfront.net/eyJidWNrZXQiOiJiYXJnYWluZm94Iiwia2V5IjoicHJvZHVjdF9pbWFnZS9menlUNm1SSXpFNjBjVjladTNJTENJOHBrbjdIZGNrM09MS0ptU3hULnBuZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6NjQwLCJmaXQiOiJpbnNpZGUifSwicXVhbGl0eSI6NzV9fQ==",
+    "category": "Beach Gear"
+  },
+  {
+    "id": 4,
+    "name": "Comfort Flip Flops",
+    "brand": "SunnyStep",
+    "price": 12,
+    "rating": 4.5,
+    "stock": 35,
+    "description": "Lightweight and comfortable flip flops perfect for beach and pool days.",
+    "image": "https://img.drz.lazcdn.com/static/bd/p/722a7225a7833b584863a4fd058fa970.jpg_720x720q80.jpg_.webp",
+    "category": "Footwear"
+  },
+  {
+    "id": 5,
+    "name": "Broad Spectrum Sunscreen SPF 50",
+    "brand": "SunGuard",
+    "price": 14,
+    "rating": 4.9,
+    "stock": 25,
+    "description": "Water-resistant sunscreen with aloe vera for long-lasting protection.",
+    "image": "https://magpiely.com.bd/cdn/shop/files/lavino-sunscreen-broad-spectrum-spf-50-PA-1.png?v=1745215781&width=800",
+    "category": "Skincare"
+  },
+  {
+    "id": 6,
+    "name": "Portable USB Mini Fan",
+    "brand": "CoolBreeze",
+    "price": 19,
+    "rating": 4.4,
+    "stock": 18,
+    "description": "Rechargeable handheld mini fan with 3 speed settings for hot summer days.",
+    "image": "https://i5.walmartimages.com/seo/Tepsmf-3-Speeds-Mini-Desk-Fan-Rechargeable-Battery-Operated-Fan-LED-Light-Portable-USB-Fan-Quiet-Home-Office-Travel-Camping-Outdoor-Indoor-Fan_d1218566-c961-4a14-9cd9-f858bf3f80de.359092fb8cdbee7a5168a576bede2fb8.jpeg",
+    "category": "Accessories"
+  },
+  {
+    "id": 7,
+    "name": "Insulated Picnic Cooler Bag",
+    "brand": "OutdoorFresh",
+    "price": 28,
+    "rating": 4.7,
+    "stock": 12,
+    "description": "Leak-proof insulated cooler bag to keep drinks and snacks cold all day.",
+    "image": "https://img.waimaoniu.net/1108/1108-202601071537500814.jpg",
+    "category": "Outdoor"
+  },
+  {
+    "id": 8,
+    "name": "Reusable Silicone Ice Cube Tray",
+    "brand": "ChillGear",
+    "price": 9,
+    "rating": 4.3,
+    "stock": 40,
+    "description": "Flexible silicone ice trays for making ice cubes or frozen treats.",
+    "image": "https://images.othoba.com/images/thumbs/1430905_ice-silicone-cube-tray-grid-14-bpa-free-flexible-reusable-mold-multicolor-1pcs.jpeg",
+    "category": "Kitchen"
+  },
+  {
+    "id": 9,
+    "name": "Summer Straw Tote Bag",
+    "brand": "BeachCarry",
+    "price": 24,
+    "rating": 4.6,
+    "stock": 14,
+    "description": "Stylish large straw tote bag perfect for beach, pool, and summer outings.",
+    "image": "https://i5.walmartimages.com/seo/Women-Straw-Bags-Summer-Beach-Large-Tote-Bag-Handmade-Woven-Shoulder-Crossbody-Handbag_c0ea6852-cc66-4a76-904b-df93518aa0f7.a2b06fa07a380fc3b77bad84f0b155e9.jpeg",
+    "category": "Bags"
+  }
+]
