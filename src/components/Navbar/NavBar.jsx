@@ -21,23 +21,27 @@ const Navbar = () => {
     ];
 
     return (
-        <nav className=" shadow">
+        <nav className="shadow">
             <div className="flex justify-between gap-4 items-center  py-2 container mx-auto">
-                <div className="flex items-center gap-2">
+                <div className="flex flex-1 items-center gap-2">
                 <Image src={logoImg} alt="" width={50} height={50} />
                 <h2 className="text-3xl font-bold text-gray-900">
                     Sun<span className="text-blue-600">Cart</span>
                 </h2>
                 </div>
-                <ul className="flex justify-between gap-2 items-center">
-                    {navItems.map((item, index) => (
-                        <MyLink key={index} href={item.path} text={item.text} />
-                    ))}
-                </ul>
-                <button className="btn bg-purple-500 text-white">
-                    <MdLogin />
-                    Log In
-                </button>
+                <div>
+                    <ul className="flex justify-between gap-2 items-center">
+                        {navItems.map((item, index) => (
+                            <MyLink key={index} href={item.path} text={item.text} />
+                        ))}
+                    </ul>
+                </div>
+                <a href="/login" className="flex-1 items-center justify-end flex">
+                    <button className="btn flex items-center">
+                        <MdLogin />
+                        Log In
+                    </button>
+                </a>
                 {/* <button className="btn bg-purple-500 text-white">
                     <MdLogout />
                     Log Out
