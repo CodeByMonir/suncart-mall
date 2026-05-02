@@ -11,11 +11,11 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import { FcEmptyTrash } from "react-icons/fc";
 import { GrGoogle } from "react-icons/gr";
 
 export default function SignInPage() {
     const onSubmit = async (e) => {
-        e.preventDefault();
 
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -33,6 +33,7 @@ export default function SignInPage() {
         await authClient.signIn.social({
             provider: 'google'
         })
+
     }
 
 
@@ -88,13 +89,14 @@ export default function SignInPage() {
 
                 <div className="flex gap-2">
                     <Button type="submit">
-                        <Check />
                         Submit
+                        <Check />
                     </Button>
                     <Button type="reset" variant="secondary">
                         Reset
+                        <FcEmptyTrash />
                     </Button>
-        </div>
+                </div>
             </Form>
 
             <p className="text-center">Or</p>

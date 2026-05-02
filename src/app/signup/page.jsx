@@ -12,6 +12,8 @@ import {
     TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
+import { FcEmptyTrash } from "react-icons/fc";
+import { GrGoogle } from "react-icons/gr";
 
 export default function SignUpPage() {
 
@@ -35,12 +37,24 @@ export default function SignUpPage() {
         })
 
         if (!error) {
-            router.push('/')
+            router.push('/login')
         }
 
     };
+
+    const handleGoogleSignIn = async () => {
+        await authClient.signIn.social({
+            provider: 'google'
+        })
+
+        if (!error) {
+            router.push('/')
+        }
+    }
+
+
     return (
-        <Card className="border mx-auto w-125 py-10 mt-5">
+        <Card className="border mx-auto w-125 py-10 mt-5 shadow-2xl ">
             <h1 className="text-center text-2xl font-bold">Sign Up</h1>
 
             <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
@@ -102,15 +116,26 @@ export default function SignUpPage() {
 
                 <div className="flex gap-2">
                     <Button type="submit">
-                        <Check />
                         Submit
+                        <Check />
                     </Button>
                     <Button type="reset" variant="secondary">
                         Reset
+                        <FcEmptyTrash />
                     </Button>
                 </div>
             </Form>
 
+            <p className="text-center">Or</p>
+
+            <Button onClick={handleGoogleSignIn} variant="outline" className={'w-full'}><GrGoogle /> Log In With Google</Button>
+
+            <p className="text-center">
+                Already have an account?{' '}
+                <a href="/login" className="text-blue-500 hover:underline">
+                    Log in
+                </a>
+            </p>
 
         </Card>
     );

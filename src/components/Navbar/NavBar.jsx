@@ -6,6 +6,7 @@ import MyLink from "./MyLink";
 import { MdLogin, MdLogout } from "react-icons/md";
 import { Avatar, Button } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
+import Link from "next/link";
 
 const Navbar = () => {
     const navItems = [
@@ -60,21 +61,17 @@ const Navbar = () => {
                     )}
                     {user && (
                         <div className="flex items-center gap-2">
-                            <Avatar size="md" className="shadow-md">
-                                <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
-                                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
-
-                            </Avatar>
+                            <Link href="/myprofile">
+                                <Avatar size="md" className="shadow-md">
+                                    <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
+                                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+                                </Avatar>
+                            </Link>
                             <Button onClick={handleLogout} size="md" variant="outline" className="shadow-md bg-transparent" >
                                 <MdLogout />
                             </Button>
                         </div>
                     )}
-                    {/* { user && (
-                    <a href="/logout" className="flex-1 items-center justify-end flex">
-                        
-                    </a>
-                )} */}
                 </div>
             </div>
         </nav>
