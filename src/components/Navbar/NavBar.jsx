@@ -1,8 +1,11 @@
+"use client";
 import React from "react";
 import logoImg from "@/assets/logo.png";
 import Image from "next/image";
 import MyLink from "./MyLink";
 import { MdLogin, MdLogout } from "react-icons/md";
+import { Avatar, Button } from "@heroui/react";
+import { authClient } from "@/lib/auth-client";
 
 const Navbar = () => {
     const navItems = [
@@ -20,6 +23,16 @@ const Navbar = () => {
         }
     ];
 
+    const userData = authClient.useSession();
+
+    const user = userData.data?.user;
+
+    const handleLogout = async () => {
+        await authClient.signOut();
+    };
+
+    console.log("user : ", user);
+
     return (
         <nav className="shadow">
             <div className="flex justify-between gap-4 items-center  py-2 container mx-auto">
@@ -36,16 +49,33 @@ const Navbar = () => {
                         ))}
                     </ul>
                 </div>
-                <a href="/login" className="flex-1 items-center justify-end flex">
-                    <button className="btn flex items-center">
-                        <MdLogin />
-                        Log In
-                    </button>
-                </a>
-                {/* <button className="btn bg-purple-500 text-white">
-                    <MdLogout />
-                    Log Out
-                </button> */}
+                <div className="flex-1 items-center justify-end flex">
+                    {!user && (
+                        <a href="/login">
+                            <Button className="btn flex items-center">
+                                <MdLogin />
+                                Log In
+                            </Button>
+                        </a>
+                    )}
+                    {user && (
+                        <div className="flex items-center gap-2">
+                            <Avatar size="md" className="shadow-md">
+                                <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
+                                <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
+
+                            </Avatar>
+                            <Button onClick={handleLogout} size="md" variant="outline" className="shadow-md bg-transparent" >
+                                <MdLogout />
+                            </Button>
+                        </div>
+                    )}
+                    {/* { user && (
+                    <a href="/logout" className="flex-1 items-center justify-end flex">
+                        
+                    </a>
+                )} */}
+                </div>
             </div>
         </nav>
     );
