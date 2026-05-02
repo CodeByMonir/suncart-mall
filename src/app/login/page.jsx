@@ -1,4 +1,5 @@
 "use client";
+
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
@@ -11,11 +12,21 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { FcEmptyTrash } from "react-icons/fc";
 import { GrGoogle } from "react-icons/gr";
 
 export default function SignInPage() {
+
+    const router = useRouter();
+
+    const searchParams = useSearchParams();
+
+    const redirect = searchParams.get("redirect");
+
     const onSubmit = async (e) => {
+
+        e.preventDefault();
 
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -23,15 +34,23 @@ export default function SignInPage() {
         const { data, error } = await authClient.signIn.email({
             email,
             password,
-            callbackURL: "/",
         });
 
-        console.log({ data, error });
+        if (error) {
+            console.log(error);
+            return;
+        }
+
+        router.push(redirect || "/");
+
     };
 
     const handleGoogleSignIn = async () => {
+
         await authClient.signIn.social({
-            provider: 'google'
+            provider: 'google',
+
+            callbackURL: redirect || "/",
         })
 
     }
@@ -92,6 +111,7 @@ export default function SignInPage() {
                         Submit
                         <Check />
                     </Button>
+
                     <Button type="reset" variant="secondary">
                         Reset
                         <FcEmptyTrash />
@@ -101,7 +121,14 @@ export default function SignInPage() {
 
             <p className="text-center">Or</p>
 
-            <Button onClick={handleGoogleSignIn} variant="outline" className={'w-full'}><GrGoogle /> Log In With Google</Button>
+            <Button
+                onClick={handleGoogleSignIn}
+                variant="outline"
+                className={'w-full'}
+            >
+                <GrGoogle />
+                Log In With Google
+            </Button>
 
             <p className="text-center">
                 Don't have an account?{' '}
