@@ -12,17 +12,16 @@ import {
     Label,
     TextField,
 } from "@heroui/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { FcEmptyTrash } from "react-icons/fc";
 import { GrGoogle } from "react-icons/gr";
 
-export default function SignInPage() {
+export default function SignInPage({ searchParams }) {
 
     const router = useRouter();
 
-    const searchParams = useSearchParams();
-
-    const redirect = searchParams.get("redirect");
+    // Get redirect path
+    const redirect = searchParams?.redirect;
 
     const onSubmit = async (e) => {
 
@@ -41,8 +40,10 @@ export default function SignInPage() {
             return;
         }
 
+        // Redirect back after login
         router.push(redirect || "/");
 
+        console.log(data);
     };
 
     const handleGoogleSignIn = async () => {
@@ -50,6 +51,7 @@ export default function SignInPage() {
         await authClient.signIn.social({
             provider: 'google',
 
+            // Redirect after Google login
             callbackURL: redirect || "/",
         })
 
