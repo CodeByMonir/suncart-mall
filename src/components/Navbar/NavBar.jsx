@@ -32,8 +32,6 @@ const Navbar = () => {
         await authClient.signOut();
     };
 
-    console.log("user : ", user);
-
     return (
         <nav className="shadow">
             <div className="flex justify-between gap-4 items-center  py-2 container mx-auto">
