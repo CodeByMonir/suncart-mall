@@ -1,6 +1,21 @@
 
 import React from 'react';
 
+export async function generateMetadata({ params }) {
+    const { id } = await params;
+
+    const res = await fetch('https://suncart-mall.vercel.app/data.json');
+
+    const data = await res.json();
+
+    const product = data.find(item => item.id == id);
+
+    return {
+        title: `SunCart || ${product?.name}`,
+        description: product?.description,
+    };
+}
+
 const ProductsDetailsPage = async ({ params }) => {
 
     const { id } = await params;

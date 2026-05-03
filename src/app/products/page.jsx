@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import React from 'react';
 
+export const metadata = {
+    title: "SunCart || Products",
+    description: "Buy Whatever You Want.",
+};
+
 const ProductsPage = async () => {
 
     const res = await fetch('https://suncart-mall.vercel.app/data.json');

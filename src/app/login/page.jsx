@@ -43,8 +43,8 @@ function SignInForm() {
             toast.error(error.message);
         }
         if (data) {
-            router.push(redirect || "/");
-            
+            router.replace(redirect || "/");
+
             toast.success(`Congrats ${data.user.name} ! Log in successful`);
         }
 
@@ -57,7 +57,6 @@ function SignInForm() {
 
             callbackURL: redirect || "/",
         })
-
     }
 
 
