@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const HeroSection = () => {
     return (
-        <section className="container mx-auto rounded-3xl mt-10 bg-linear-to-br from-orange-50 via-white to-red-50">
+        <section className="container mx-auto rounded-3xl mt-10 bg-linear-to-br from-orange-50 via-white/20 to-red-50/20 shadow-2xl">
             <div className="max-w-7xl mx-auto px-6 py-20 lg:py-28">
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-14">

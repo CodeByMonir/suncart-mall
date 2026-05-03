@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NotFoundPage = () => {
     return (
-        <section className="min-h-screen bg-linear-to-br from-red-50 via-white to-orange-50 flex items-center justify-center px-6">
+        <section className="min-h-screen bg-linear-to-br from-red-50/10 via-white/10 to-orange-50/10 flex items-center justify-center px-6 mt-10">
 
             <div className="max-w-2xl text-center">
 
@@ -37,7 +37,7 @@ const NotFoundPage = () => {
 
                 </div>
 
-                <div className="mt-14 bg-white border border-red-100 rounded-3xl p-8 shadow-sm">
+                <div className="mt-14 bg-transparent border border-red-100 rounded-3xl p-8 shadow-xl">
 
                     <div className="text-6xl">
                         😵

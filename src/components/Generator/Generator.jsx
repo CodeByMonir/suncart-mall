@@ -18,10 +18,9 @@ const Generator = async () => {
                 {data.map((item) => (
                     <div
                         key={item.id}
-                        className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
+                        className="bg-black/10 rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
                     >
 
-                        {/* Image */}
                         <div className="overflow-hidden">
                             <img
                                 src={item.image}
@@ -30,7 +29,6 @@ const Generator = async () => {
                             />
                         </div>
 
-                        {/* Content */}
                         <div className="p-6">
 
                             <div className="flex items-center justify-between">
@@ -38,8 +36,8 @@ const Generator = async () => {
                                     {item.name}
                                 </h3>
 
-                                <span className="bg-orange-100 text-orange-600 text-sm px-3 py-1 rounded-full">
-                                    ⭐ {item.rating}
+                                <span className="flex gap-2 bg-orange-100 text-orange-600 text-sm px-3 py-1 rounded-full">
+                                    <span>⭐</span> {item.rating}
                                 </span>
                             </div>
 
@@ -49,7 +47,7 @@ const Generator = async () => {
 
                             <Link
                                 href={`/products/${item.id}`}
-                                className="mt-6 inline-block w-full text-center bg-gray-900 hover:bg-red-500 text-white py-3 rounded-xl font-semibold transition-all duration-300"
+                                className="mt-6 inline-block w-full text-center bg-gray-900/50 hover:bg-red-500/80 text-white py-3 rounded-xl font-semibold transition-all duration-300"
                             >
                                 View Details
                             </Link>

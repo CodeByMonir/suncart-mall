@@ -16,8 +16,8 @@ const ProductsDetailsPage = async ({ params }) => {
     const product = data.find(item => item.id == id);
 
     return (
-        <section className="container mx-auto px-6 py-20">
-            <div className="border rounded-xl overflow-hidden shadow-sm hover:shadow-lg sm:flex gap-10 p-8 transition bg-white">
+        <section className="container mx-auto px-6 pt-20 pb-10">
+            <div className="border rounded-xl overflow-hidden shadow-sm hover:shadow-lg sm:flex gap-10 p-8 transition bg-white/10">
 
                 <div className="relative shadow-2xl rounded-xl overflow-hidden">
                     <img

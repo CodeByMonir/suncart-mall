@@ -16,6 +16,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { FcEmptyTrash } from "react-icons/fc";
 import { GrGoogle } from "react-icons/gr";
+import { toast } from "react-toastify";
 
 function SignInForm() {
 
@@ -35,14 +36,17 @@ function SignInForm() {
         const { data, error } = await authClient.signIn.email({
             email,
             password,
+            rememberMe: true,
         });
 
         if (error) {
-            console.log(error);
-            return;
+            toast.error(error.message);
         }
+        if (data) {
+            toast.success(`Congrats ${data.user.name} ! Log in successful`);
 
-        router.push(redirect || "/");
+            router.push(redirect || "/");
+        }
 
     };
 
@@ -59,85 +63,137 @@ function SignInForm() {
 
 
     return (
-        <Card className="border mx-auto w-125 py-10 mt-5">
-            <h1 className="text-center text-2xl font-bold">Log In</h1>
+        <div className="mx-4 sm:mx-10">
 
-            <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
-                <TextField
-                    isRequired
-                    name="email"
-                    type="email"
-                    validate={(value) => {
-                        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                            return "Please enter a valid email address";
-                        }
-
-                        return null;
-                    }}
-                >
-                    <Label>Email</Label>
-                    <Input placeholder="john@example.com" />
-                    <FieldError />
-                </TextField>
-
-                <TextField
-                    isRequired
-                    minLength={8}
-                    name="password"
-                    type="password"
-                    validate={(value) => {
-                        if (value.length < 8) {
-                            return "Password must be at least 8 characters";
-                        }
-                        if (!/[A-Z]/.test(value)) {
-                            return "Password must contain at least one uppercase letter";
-                        }
-                        if (!/[0-9]/.test(value)) {
-                            return "Password must contain at least one number";
-                        }
-
-                        return null;
-                    }}
-                >
-                    <Label>Password</Label>
-                    <Input placeholder="Enter your password" />
-                    <Description>
-                        Must be at least 8 characters with 1 uppercase and 1 number
-                    </Description>
-                    <FieldError />
-                </TextField>
-
-                <div className="flex gap-2">
-                    <Button type="submit">
-                        Submit
-                        <Check />
-                    </Button>
-
-                    <Button type="reset" variant="secondary">
-                        Reset
-                        <FcEmptyTrash />
-                    </Button>
-                </div>
-            </Form>
-
-            <p className="text-center">Or</p>
-
-            <Button
-                onClick={handleGoogleSignIn}
-                variant="outline"
-                className={'w-full'}
+            <Card
+                className="
+            bg-transparent border mx-auto 
+            w-full max-w-125 
+            py-8 sm:py-10 
+            mt-5 
+            px-4 sm:px-6
+        "
             >
-                <GrGoogle />
-                Log In With Google
-            </Button>
 
-            <p className="text-center">
-                Dont have an account?
-                <a href="/signup" className="text-blue-500 hover:underline">
-                    Sign up
-                </a>
-            </p>
-        </Card>
+                <h1 className="text-center text-2xl font-bold">
+                    Log In
+                </h1>
+
+                <Form
+                    className="
+                flex flex-col gap-4 
+                w-full
+            "
+                    onSubmit={onSubmit}
+                >
+
+                    <TextField
+                        isRequired
+                        name="email"
+                        type="email"
+                        validate={(value) => {
+                            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                                return "Please enter a valid email address";
+                            }
+
+                            return null;
+                        }}
+                    >
+                        <Label>Email</Label>
+
+                        <Input
+                            className="bg-transparent"
+                            placeholder="john@example.com"
+                        />
+
+                        <FieldError />
+                    </TextField>
+
+                    <TextField
+                        isRequired
+                        minLength={8}
+                        name="password"
+                        type="password"
+                        validate={(value) => {
+                            if (value.length < 8) {
+                                return "Password must be at least 8 characters";
+                            }
+
+                            if (!/[A-Z]/.test(value)) {
+                                return "Password must contain at least one uppercase letter";
+                            }
+
+                            if (!/[0-9]/.test(value)) {
+                                return "Password must contain at least one number";
+                            }
+
+                            return null;
+                        }}
+                    >
+                        <Label>Password</Label>
+
+                        <Input
+                            className="bg-transparent"
+                            placeholder="Enter your password"
+                        />
+
+                        <Description>
+                            Must be at least 8 characters with 1 uppercase and 1 number
+                        </Description>
+
+                        <FieldError />
+                    </TextField>
+
+                    <div
+                        className="
+                    flex flex-col sm:flex-row 
+                    gap-2 mt-3
+                "
+                    >
+
+                        <Button type="submit" fullWidth>
+                            Submit
+                            <Check />
+                        </Button>
+
+                        <Button
+                            type="reset"
+                            variant="secondary"
+                            className="w-full sm:w-auto"
+                        >
+
+                            Reset
+                            <FcEmptyTrash />
+                        </Button>
+                    </div>
+                </Form>
+
+                <p className="text-center my-4">
+                    Or
+                </p>
+
+                <Button
+                    onClick={handleGoogleSignIn}
+                    variant="outline"
+                    className="w-full hover:bg-black/5"
+                >
+                    <GrGoogle />
+                    Log In With Google
+                </Button>
+
+                <p className="text-center mt-4 text-sm sm:text-base">
+
+                    Don't have an account?{" "}
+
+                    <a
+                        href="/signup"
+                        className="text-blue-500 hover:underline"
+                    >
+                        Sign up
+                    </a>
+                </p>
+            </Card>
+        </div>
     );
 }
 

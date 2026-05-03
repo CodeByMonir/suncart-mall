@@ -2,141 +2,191 @@
 import { authClient } from "@/lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
-    Button,
-    Card,
-    Description,
-    FieldError,
-    Form,
-    Input,
-    Label,
-    TextField,
+  Button,
+  Card,
+  Description,
+  FieldError,
+  Form,
+  Input,
+  Label,
+  TextField,
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { FcEmptyTrash } from "react-icons/fc";
 import { GrGoogle } from "react-icons/gr";
+import { toast } from "react-toastify";
 
 export default function SignUpPage() {
+  const router = useRouter();
 
-    const router = useRouter()
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-    const onSubmit = async (e) => {
-        e.preventDefault();
+    const name = e.target.name.value;
+    const image = e.target.image.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-        const name = e.target.name.value;
-        const image = e.target.image.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
+    const { data, error } = await authClient.signUp.email({
+      name,
+      email,
+      password,
+      image,
+    });
 
-        // console.log({ name, email, password, image })
-
-        const { data, error } = await authClient.signUp.email({
-            name,
-            email,
-            password,
-            image,
-        })
-
-        if (!error) {
-            router.push('/login')
-        }
-
-    };
-
-    const handleGoogleSignIn = async () => {
-        await authClient.signIn.social({
-            provider: 'google'
-        })
-
-        if (!error) {
-            router.push('/')
-        }
+    if (error) {
+      toast.error(error.message);
     }
+    if (data) {
+      toast.success("Sign up successful! Please log in.");
+      await authClient.signOut();
 
+      router.refresh();
+      router.push("/login");
+    }
+  };
 
-    return (
-        <Card className="border mx-auto w-125 py-10 mt-5 shadow-2xl ">
-            <h1 className="text-center text-2xl font-bold">Sign Up</h1>
+  const handleGoogleSignIn = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
 
-            <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
-                <TextField isRequired name="name" type="text">
-                    <Label>Name</Label>
-                    <Input placeholder="Enter your name" />
-                    <FieldError />
-                </TextField>
+    if (!error) {
+      router.push("/");
+    }
+  };
 
-                <TextField isRequired name="image" type="text">
-                    <Label>Image URL</Label>
-                    <Input placeholder="Image URL" />
-                    <FieldError />
-                </TextField>
+  return (
+    <div className="px-4 sm:px-0">
+      <Card
+        className="
+            bg-transparent border shadow-2xl
+            mx-auto
+            w-full max-w-125
+            py-8 sm:py-10
+            px-4 sm:px-6
+            mt-5
+        "
+      >
+        <h1 className="text-center text-2xl font-bold">Sign Up</h1>
 
-                <TextField
-                    isRequired
-                    name="email"
-                    type="email"
-                    validate={(value) => {
-                        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                            return "Please enter a valid email address";
-                        }
+        <Form
+          className="
+                flex flex-col gap-4
+                w-full
+            "
+          onSubmit={onSubmit}
+        >
+          <TextField isRequired name="name" type="text">
+            <Label>Name</Label>
 
-                        return null;
-                    }}
-                >
-                    <Label>Email</Label>
-                    <Input placeholder="john@example.com" />
-                    <FieldError />
-                </TextField>
+            <Input className="bg-transparent" placeholder="Enter your name" />
 
-                <TextField
-                    isRequired
-                    minLength={8}
-                    name="password"
-                    type="password"
-                    validate={(value) => {
-                        if (value.length < 8) {
-                            return "Password must be at least 8 characters";
-                        }
-                        if (!/[A-Z]/.test(value)) {
-                            return "Password must contain at least one uppercase letter";
-                        }
-                        if (!/[0-9]/.test(value)) {
-                            return "Password must contain at least one number";
-                        }
+            <FieldError />
+          </TextField>
 
-                        return null;
-                    }}
-                >
-                    <Label>Password</Label>
-                    <Input placeholder="Enter your password" />
-                    <Description>
-                        Must be at least 8 characters with 1 uppercase and 1 number
-                    </Description>
-                    <FieldError />
-                </TextField>
+          <TextField isRequired name="image" type="text">
+            <Label>Image URL</Label>
 
-                <div className="flex gap-2">
-                    <Button type="submit">
-                        Submit
-                        <Check />
-                    </Button>
-                    <Button type="reset" variant="secondary">
-                        Reset
-                        <FcEmptyTrash />
-                    </Button>
-                </div>
-            </Form>
+            <Input className="bg-transparent" placeholder="Image URL" />
 
-            <p className="text-center">Or</p>
+            <FieldError />
+          </TextField>
 
-            <Button onClick={handleGoogleSignIn} variant="outline" className={'w-full'}><GrGoogle /> Log In With Google</Button>
+          <TextField
+            isRequired
+            name="email"
+            type="email"
+            validate={(value) => {
+              if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
+                return "Please enter a valid email address";
+              }
 
-            <p className="text-center">
-                Already have an account?{' '}
-                <a href="/login" className="text-blue-500 hover:underline">
-                    Log in
-                </a>
-            </p>
+              return null;
+            }}
+          >
+            <Label>Email</Label>
 
-        </Card>
-    );
+            <Input className="bg-transparent" placeholder="john@example.com" />
+
+            <FieldError />
+          </TextField>
+
+          <TextField
+            isRequired
+            minLength={8}
+            name="password"
+            type="password"
+            validate={(value) => {
+              if (value.length < 8) {
+                return "Password must be at least 8 characters";
+              }
+
+              if (!/[A-Z]/.test(value)) {
+                return "Password must contain at least one uppercase letter";
+              }
+
+              if (!/[0-9]/.test(value)) {
+                return "Password must contain at least one number";
+              }
+
+              return null;
+            }}
+          >
+            <Label>Password</Label>
+
+            <Input
+              className="bg-transparent"
+              placeholder="Enter your password"
+            />
+
+            <Description>
+              Must be at least 8 characters with 1 uppercase and 1 number
+            </Description>
+
+            <FieldError />
+          </TextField>
+
+          <div
+            className="
+                    flex flex-col sm:flex-row
+                    gap-2 mt-3
+                "
+          >
+            <Button type="submit" fullWidth>
+              Submit
+              <Check />
+            </Button>
+
+            <Button
+              type="reset"
+              variant="secondary"
+              className="w-full sm:w-auto"
+            >
+              Reset
+              <FcEmptyTrash />
+            </Button>
+          </div>
+        </Form>
+
+        <p className="text-center my-4">Or</p>
+
+        <Button
+          onClick={handleGoogleSignIn}
+          variant="outline"
+          className="w-full hover:bg-black/5"
+        >
+          <GrGoogle />
+          Log In With Google
+        </Button>
+
+        <p className="text-center mt-4 text-sm sm:text-base">
+          Already have an account?{" "}
+          <a href="/login" className="text-blue-500 hover:underline">
+            Log in
+          </a>
+        </p>
+      </Card>
+    </div>
+  );
 }

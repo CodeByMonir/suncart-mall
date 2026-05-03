@@ -12,8 +12,8 @@ const ProductsPage = async () => {
     const data = await res.json();
 
     return (
-        <div>
-            <section className="max-w-7xl mx-auto px-6 py-20">
+        <div className='mx-5'>
+            <section className="container mx-auto mt-10 px-6 py-10 bg-white/20 rounded-3xl shadow-lg">
 
                 <div className="text-center">
                     <h2 className="text-4xl font-black text-gray-900 mt-2">
@@ -26,7 +26,7 @@ const ProductsPage = async () => {
                     {data.map((item) => (
                         <div
                             key={item.id}
-                            className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
+                            className="bg-black/10 rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
                         >
 
                             <div className="overflow-hidden">
@@ -44,8 +44,8 @@ const ProductsPage = async () => {
                                         {item.name}
                                     </h3>
 
-                                    <span className="bg-orange-100 text-orange-600 text-sm px-3 py-1 rounded-full">
-                                        ⭐ {item.rating}
+                                    <span className="flex gap-2 bg-orange-100 text-orange-600 text-sm px-3 py-1 rounded-full">
+                                        <span>⭐</span> {item.rating}
                                     </span>
                                 </div>
 
@@ -55,7 +55,7 @@ const ProductsPage = async () => {
 
                                 <Link
                                     href={`/products/${item.id}`}
-                                    className="mt-6 inline-block w-full text-center bg-gray-900 hover:bg-red-500 text-white py-3 rounded-xl font-semibold transition-all duration-300"
+                                    className="mt-6 inline-block w-full text-center bg-gray-900/50 hover:bg-red-500/80 text-white py-3 rounded-xl font-semibold transition-all duration-300"
                                 >
                                     View Details
                                 </Link>

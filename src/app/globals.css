@@ -1,3 +1,24 @@
 @import "tailwindcss";
 @import "@heroui/styles";
 @plugin "daisyui";
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-image: url("/bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: inherit;
+    z-index: -1;
+}

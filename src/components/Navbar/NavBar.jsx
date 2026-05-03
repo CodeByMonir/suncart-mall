@@ -7,8 +7,13 @@ import { MdLogin, MdLogout } from "react-icons/md";
 import { Avatar, Button } from "@heroui/react";
 import { authClient } from "@/lib/auth-client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import userAvatar from "@/assets/user.png";
+import { toast } from "react-toastify";
+import SideBar from "../SideBar/SideBar";
 
 const Navbar = () => {
+    const router = useRouter();
     const navItems = [
         {
             path: "/",
@@ -30,6 +35,10 @@ const Navbar = () => {
 
     const handleLogout = async () => {
         await authClient.signOut();
+        router.refresh();
+        toast.success("Logged out successfully");
+        router.push("/login");
+
     };
 
     return (
@@ -41,7 +50,7 @@ const Navbar = () => {
                     Sun<span className="text-blue-600">Cart</span>
                 </h2>
                 </div>
-                <div>
+                <div className="hidden md:block">
                     <ul className="flex justify-between gap-2 items-center">
                         {navItems.map((item, index) => (
                             <MyLink key={index} href={item.path} text={item.text} />
@@ -50,24 +59,37 @@ const Navbar = () => {
                 </div>
                 <div className="flex-1 items-center justify-end flex">
                     {!user && (
-                        <a href="/login">
-                            <Button className="btn flex items-center">
-                                <MdLogin />
-                                Log In
-                            </Button>
-                        </a>
+                        <div>
+                            <a href="/login" className="hidden md:block">
+                                <Button className="btn flex items-center bg-transparent shadow-md" size="md" variant="outline">
+                                    <MdLogin />
+                                    Log In
+                                </Button>
+                            </a>
+                            <SideBar />
+                        </div>
                     )}
                     {user && (
                         <div className="flex items-center gap-2">
                             <Link href="/myprofile">
-                                <Avatar size="md" className="shadow-md">
-                                    <Avatar.Image alt="John Doe" src={user?.image} referrerPolicy="no-referrer" />
-                                    <Avatar.Fallback>{user?.name.charAt(0)}</Avatar.Fallback>
-                                </Avatar>
+                                <Image
+                                    src={
+                                        user?.image?.startsWith("http")
+                                            ? user.image
+                                            : userAvatar
+                                    }
+                                    alt="Profile Picture"
+                                    width={40}
+                                    height={40}
+                                    className="w-10 h-10 rounded-full object-cover border border-blue-100"
+                                />
                             </Link>
-                            <Button onClick={handleLogout} size="md" variant="outline" className="shadow-md bg-transparent" >
+                            <Button onClick={handleLogout} size="md" variant="outline" className="shadow-md bg-transparent hidden md:block" >
                                 <MdLogout />
                             </Button>
+                            <div>
+                                <SideBar />
+                            </div>
                         </div>
                     )}
                 </div>

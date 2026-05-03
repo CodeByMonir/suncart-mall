@@ -1,30 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
-import UpdateProfile from "@/components/UpdateProfile/UpdateProfile";
 import { Check } from "@gravity-ui/icons";
 import { Button } from "@heroui/react";
+import Image from "next/image";
+import userAvatar from "@/assets/user.png";
 
 const MyProfile = () => {
-
+    const router = useRouter();
     const userData = authClient.useSession();
     const user = userData.data?.user;
 
-    const [openModal, setOpenModal] = useState(false);
-
     return (
-        <div className="min-h-[80vh] bg-gray-50 flex items-center justify-center px-6">
+        <div className="min-h-[60vh] flex items-center justify-center px-6 mt-10">
 
             <div className="max-w-sm w-full bg-[#00000015] rounded-3xl border border-gray-100 shadow-lg p-8">
 
                 <div className="flex justify-center">
-                    <img
+                    <Image
                         src={
-                            user?.image ||
-                            "https://i.ibb.co/4pDNDk1/avatar.png"
+                            user?.image?.startsWith("http")
+                                ? user.image
+                                : userAvatar
                         }
-                        alt={user?.name}
+                        alt="Profile Picture"
+                        width={112}
+                        height={112}
                         className="w-28 h-28 rounded-full object-cover border-4 border-blue-100"
                     />
                 </div>
@@ -42,18 +45,13 @@ const MyProfile = () => {
                 </div>
 
                 <Button
-                    onClick={() => setOpenModal(true)}
-                    type="submit"
+                    onClick={() => router.push('/updateprofile')}
                     variant="primary"
                     className="w-full mt-6"
                 >
                     Update Profile
                 </Button>
             </div>
-
-            <UpdateProfile openModal={openModal} setOpenModal={setOpenModal} />
-
-
         </div>
     );
 };

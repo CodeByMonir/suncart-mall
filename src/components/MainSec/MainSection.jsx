@@ -8,12 +8,19 @@ const MainSection = () => {
     return (
         <div className='container mx-auto my-10'>
 
-            <div className="bg-gray-50  rounded-3xl">
+            <div className="bg-transparent  rounded-3xl">
+                <div className="max-w-7xl mx-auto px-6 mt-20 bg-white/20 border border-gray-100 rounded-3xl py-12">
+                    <div className="text-center">
+                        <h2 className="text-4xl font-black text-gray-900">
+                            Popular Products
+                        </h2>
+                    </div>
 
                     <Generator />
 
-                <section className="bg-white py-20">
-                    <div className="max-w-7xl mx-auto px-6">
+                </div>
+                <section className="bg-transparent pt-20">
+                    <div className="max-w-7xl mx-auto px-6 bg-white/20 border border-gray-100 rounded-3xl py-12">
 
                         <div className="text-center">
                             <h2 className="text-4xl font-black text-gray-900 mt-2">
@@ -23,7 +30,7 @@ const MainSection = () => {
 
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
 
-                            <div className="bg-blue-50 border border-blue-100 rounded-3xl p-8">
+                            <div className="bg-blue-50/50 border border-blue-100 rounded-3xl p-8">
                                 <h3 className="text-2xl font-bold text-gray-900">
                                     💧 Stay Hydrated
                                 </h3>
@@ -34,7 +41,7 @@ const MainSection = () => {
                                 </p>
                             </div>
 
-                            <div className="bg-pink-50 border border-pink-100 rounded-3xl p-8">
+                            <div className="bg-pink-50/50 border border-pink-100 rounded-3xl p-8">
                                 <h3 className="text-2xl font-bold text-gray-900">
                                     ☀️ Protect Skin
                                 </h3>
@@ -45,7 +52,7 @@ const MainSection = () => {
                                 </p>
                             </div>
 
-                            <div className="bg-green-50 border border-green-100 rounded-3xl p-8">
+                            <div className="bg-green-50/50 border border-green-100 rounded-3xl p-8">
                                 <h3 className="text-2xl font-bold text-gray-900">
                                     🥗 Eat Healthy
                                 </h3>
@@ -59,7 +66,7 @@ const MainSection = () => {
                     </div>
                 </section>
 
-                <section className="max-w-7xl mx-auto px-6 py-20">
+                <section className="max-w-7xl mx-auto mt-20 py-10 px-6 bg-white/20 border border-gray-100 rounded-3xl">
 
                     <div className="text-center">
                         <h2 className="text-4xl font-black text-gray-900 mt-2">
@@ -72,7 +79,7 @@ const MainSection = () => {
                         {brands.map((brand, index) => (
                             <div
                                 key={index}
-                                className="bg-white border border-gray-100 rounded-3xl py-10 flex items-center justify-center shadow-sm hover:shadow-lg transition-all duration-300"
+                                className="bg-white/20 border border-gray-100 rounded-3xl py-10 flex items-center justify-center shadow-xl hover:shadow-lg transition-all duration-300"
                             >
                                 <h3 className="text-2xl font-black text-gray-800">
                                     {brand}
