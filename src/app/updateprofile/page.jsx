@@ -79,7 +79,7 @@ const UpdateProfile = () => {
 
                         <div className="flex gap-2">
                             <Button
-                                type="submit"
+                                type="submit" fullWidth className="shadow-xl"
                             >
                                 Submit
                                 <Check />

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import Image from 'next/image';
 
 const ProductsPage = async () => {
 
@@ -29,11 +30,12 @@ const ProductsPage = async () => {
                             className="bg-black/10 rounded-3xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group"
                         >
 
-                            <div className="overflow-hidden">
-                                <img
+                            <div className="overflow-hidden relative">
+                                <Image
+                                    fill
                                     src={item.image}
                                     alt={item.name}
-                                    className="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-500"
+                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                                 />
                             </div>
 

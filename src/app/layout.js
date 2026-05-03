@@ -4,6 +4,8 @@ import Footer from "@/components/Footer/Footer";
 import Navbar from "@/components/Navbar/NavBar";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "animate.css";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +36,7 @@ export default function RootLayout({ children }) {
 
         <Footer />
 
-        <ToastContainer />
+        <ToastContainer position="bottom-right" autoClose={1500} />
       </body>
     </html>
   );

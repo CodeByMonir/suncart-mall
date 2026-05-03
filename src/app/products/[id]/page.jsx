@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Image from 'next/image';
 
 const ProductsDetailsPage = async ({ params }) => {
 
@@ -20,10 +21,11 @@ const ProductsDetailsPage = async ({ params }) => {
             <div className="border rounded-xl overflow-hidden shadow-sm hover:shadow-lg sm:flex gap-10 p-8 transition bg-white/10">
 
                 <div className="relative shadow-2xl rounded-xl overflow-hidden">
-                    <img
+                    <Image
+                        fill
                         src={product.image}
                         alt={product.name}
-                        className="h-full w-96 object-cover"
+                        className="object-cover"
                     />
 
                     <span className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-1 rounded">

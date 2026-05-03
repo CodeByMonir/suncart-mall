@@ -46,7 +46,8 @@ const Navbar = () => {
             <div className="flex justify-between gap-4 items-center  py-2 container mx-auto">
                 <div className="flex flex-1 items-center gap-2">
                 <Image src={logoImg} alt="" width={50} height={50} />
-                <h2 className="text-3xl font-bold text-gray-900">
+                    <h2
+                        className="text-3xl font-bold text-gray-900 animate__animated animate__backInRight animate__slow">
                     Sun<span className="text-blue-600">Cart</span>
                 </h2>
                 </div>

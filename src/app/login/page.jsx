@@ -66,13 +66,7 @@ function SignInForm() {
         <div className="mx-4 sm:mx-10">
 
             <Card
-                className="
-            bg-transparent border mx-auto 
-            w-full max-w-125 
-            py-8 sm:py-10 
-            mt-5 
-            px-4 sm:px-6
-        "
+                className="bg-transparent border mx-auto w-full max-w-125 py-8 sm:py-10 mt-5 px-4 sm:px-6"
             >
 
                 <h1 className="text-center text-2xl font-bold">
@@ -80,10 +74,7 @@ function SignInForm() {
                 </h1>
 
                 <Form
-                    className="
-                flex flex-col gap-4 
-                w-full
-            "
+                    className="flex flex-col gap-4 w-full"
                     onSubmit={onSubmit}
                 >
 
@@ -119,14 +110,6 @@ function SignInForm() {
                                 return "Password must be at least 8 characters";
                             }
 
-                            if (!/[A-Z]/.test(value)) {
-                                return "Password must contain at least one uppercase letter";
-                            }
-
-                            if (!/[0-9]/.test(value)) {
-                                return "Password must contain at least one number";
-                            }
-
                             return null;
                         }}
                     >
@@ -145,10 +128,7 @@ function SignInForm() {
                     </TextField>
 
                     <div
-                        className="
-                    flex flex-col sm:flex-row 
-                    gap-2 mt-3
-                "
+                        className="flex flex-col sm:flex-row gap-2 mt-3"
                     >
 
                         <Button type="submit" fullWidth>
@@ -168,7 +148,7 @@ function SignInForm() {
                     </div>
                 </Form>
 
-                <p className="text-center my-4">
+                <p className="text-center my-0">
                     Or
                 </p>
 
@@ -183,7 +163,7 @@ function SignInForm() {
 
                 <p className="text-center mt-4 text-sm sm:text-base">
 
-                    Don't have an account?{" "}
+                    Don&apos;t have an account?{" "}
 
                     <a
                         href="/signup"

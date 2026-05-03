@@ -47,27 +47,23 @@ export default function SignUpPage() {
   };
 
   const handleGoogleSignIn = async () => {
-    await authClient.signIn.social({
+    const { data, error } = await authClient.signIn.social({
       provider: "google",
     });
 
-    if (!error) {
+    if (error) {
+      toast.error(error.message);
+      return;
+    }
+
+    if (data) {
       router.push("/");
     }
   };
 
   return (
     <div className="px-4 sm:px-0">
-      <Card
-        className="
-            bg-transparent border shadow-2xl
-            mx-auto
-            w-full max-w-125
-            py-8 sm:py-10
-            px-4 sm:px-6
-            mt-5
-        "
-      >
+      <Card className="bg-transparent border shadow-2xl mx-auto w-full max-w-125 py-8 sm:py-10 px-4 sm:px-6 mt-5">
         <h1 className="text-center text-2xl font-bold">Sign Up</h1>
 
         <Form
@@ -169,7 +165,7 @@ export default function SignUpPage() {
           </div>
         </Form>
 
-        <p className="text-center my-4">Or</p>
+        <p className="text-center my-0">Or</p>
 
         <Button
           onClick={handleGoogleSignIn}
