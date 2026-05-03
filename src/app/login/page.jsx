@@ -43,9 +43,9 @@ function SignInForm() {
             toast.error(error.message);
         }
         if (data) {
-            toast.success(`Congrats ${data.user.name} ! Log in successful`);
-
             router.push(redirect || "/");
+            
+            toast.success(`Congrats ${data.user.name} ! Log in successful`);
         }
 
     };
@@ -66,7 +66,7 @@ function SignInForm() {
         <div className="mx-4 sm:mx-10">
 
             <Card
-                className="bg-transparent border mx-auto w-full max-w-125 py-8 sm:py-10 mt-5 px-4 sm:px-6"
+                className="bg-transparent border mx-auto w-full max-w-md py-8 sm:py-10 mt-5 px-4 sm:px-6"
             >
 
                 <h1 className="text-center text-2xl font-bold">

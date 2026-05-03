@@ -63,14 +63,20 @@ export default function SignUpPage() {
 
   return (
     <div className="px-4 sm:px-0">
-      <Card className="bg-transparent border shadow-2xl mx-auto w-full max-w-125 py-8 sm:py-10 px-4 sm:px-6 mt-5">
+      <Card
+        className="
+            bg-transparent border shadow-2xl
+            mx-auto
+            w-full max-w-125
+            py-8 sm:py-10
+            px-4 sm:px-6
+            mt-5
+        "
+      >
         <h1 className="text-center text-2xl font-bold">Sign Up</h1>
 
         <Form
-          className="
-                flex flex-col gap-4
-                w-full
-            "
+          className=" flex flex-col gap-4w-full"
           onSubmit={onSubmit}
         >
           <TextField isRequired name="name" type="text">
@@ -144,10 +150,7 @@ export default function SignUpPage() {
           </TextField>
 
           <div
-            className="
-                    flex flex-col sm:flex-row
-                    gap-2 mt-3
-                "
+            className="flex flex-col sm:flex-row gap-2 mt-3"
           >
             <Button type="submit" fullWidth>
               Submit

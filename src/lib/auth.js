@@ -6,7 +6,8 @@ const client = new MongoClient(process.env.MONGODB_URI);
 const db = client.db("suncart");
 
 export const auth = betterAuth({
-  
+  baseURL: process.env.BETTER_AUTH_URL || "https://suncart-mall.vercel.app/",
+
   emailAndPassword: {
     enabled: true,
   },
@@ -18,7 +19,7 @@ export const auth = betterAuth({
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET
-    }
-  }
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    },
+  },
 });
