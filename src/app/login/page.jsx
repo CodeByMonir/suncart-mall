@@ -43,7 +43,7 @@ function SignInForm() {
             toast.error(error.message);
         }
         if (data) {
-            router.replace(redirect || "/");
+            router.push(`${redirect || "/"}`);
 
             toast.success(`Congrats ${data.user.name} ! Log in successful`);
         }
