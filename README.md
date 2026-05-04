@@ -8,6 +8,12 @@ SunCart is a modern e-commerce web application built with Next.js. Users can bro
 
 ---
 
+There is a little problem with my log in page. After clicking on products details it saves the url also redirected to log in page but completing the login it is stay in login page not redirect to products details page instant but a while after 2nd time log in redirects to products details page.
+
+I was in frustrated until a instructor gives me confidence that no mart will *decrease for this.
+
+---
+
 # 📌 Project Purpose
 
 The main goal of SunCart is to create a fast, responsive, and user-friendly online shopping experience using modern web technologies.
