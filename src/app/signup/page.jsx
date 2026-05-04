@@ -153,7 +153,7 @@ export default function SignUpPage() {
             className="flex flex-col sm:flex-row gap-2 mt-3"
           >
             <Button type="submit" fullWidth>
-              Submit
+              Sign Up
               <Check />
             </Button>
 

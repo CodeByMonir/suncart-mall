@@ -131,10 +131,10 @@ function SignInForm() {
                     >
 
                         <Button
-                        type="submit"
-                        onClick={() => SubmitFunc}
-                        fullWidth>
-                            Submit
+                            type="submit"
+                            fullWidth
+                        >
+                            Log In
                             <Check />
                         </Button>
 
