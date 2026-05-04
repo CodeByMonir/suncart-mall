@@ -26,7 +26,7 @@ function SignInForm() {
 
     const redirect = searchParams.get("redirect");
 
-    const onSubmit = async (e) => {
+    const SubmitFunc = async (e) => {
 
         e.preventDefault();
 
@@ -74,7 +74,7 @@ function SignInForm() {
 
                 <Form
                     className="flex flex-col gap-4 w-full"
-                    onSubmit={onSubmit}
+                    onSubmit={SubmitFunc}
                 >
 
                     <TextField
@@ -130,7 +130,10 @@ function SignInForm() {
                         className="flex flex-col sm:flex-row gap-2 mt-3"
                     >
 
-                        <Button type="submit" fullWidth>
+                        <Button
+                        type="submit"
+                        onClick={() => SubmitFunc}
+                        fullWidth>
                             Submit
                             <Check />
                         </Button>
