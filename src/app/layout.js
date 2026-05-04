@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
 
         <Footer />
 
-        <ToastContainer position="bottom-right" autoClose={1500} />
+        <ToastContainer position="bottom-right" autoClose={2000} />
       </body>
     </html>
   );
