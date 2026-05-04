@@ -45,7 +45,7 @@ function SignInForm() {
         if (data) {
             toast.success(`Congrats ${data.user.name} ! Log in successful`);
             router.refresh();
-            router.push(`${redirect || "/"}`);
+            router.push(redirect || "/");
         }
 
     };
